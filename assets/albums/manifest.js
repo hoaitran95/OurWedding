@@ -26,18 +26,23 @@ window.WEDDING.album = [
     "caption": ""
   },
   {
-    "src": "assets/albums/IMG_0850.jpg",
+    "src": "assets/albums/IMG_0810.jpg",
     "alt": "Ảnh cưới 6",
     "caption": ""
   },
   {
-    "src": "assets/albums/IMG_0964.jpg",
+    "src": "assets/albums/IMG_0850.jpg",
     "alt": "Ảnh cưới 7",
     "caption": ""
   },
   {
-    "src": "assets/albums/IMG_0983.jpg",
+    "src": "assets/albums/IMG_0946.jpg",
     "alt": "Ảnh cưới 8",
+    "caption": ""
+  },
+  {
+    "src": "assets/albums/IMG_0964.jpg",
+    "alt": "Ảnh cưới 9",
     "caption": ""
   }
 ];
