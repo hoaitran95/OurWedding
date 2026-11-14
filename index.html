@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#752f39">
+  <title>Minh Hoài &amp; Phương Dung — Mình cưới nhé</title>
+  <meta name="description" content="Thiệp mời hôn lễ của Minh Hoài và Phương Dung.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Minh Hoài &amp; Phương Dung — Mình cưới nhé">
+  <meta property="og:description" content="Trân trọng mời bạn đến chung vui trong ngày hạnh phúc của chúng mình.">
+  <meta property="og:image" content="assets/photos/hero.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="content.js" defer></script>
+  <script src="assets/albums/manifest.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#invitation">Đến nội dung lời mời</a>
+  <section class="cover-screen" id="cover-screen" aria-label="Bìa thiệp cưới">
+    <button class="cover-open" id="open-invitation" type="button" aria-label="Mở thiệp cưới Minh Hoài và Phương Dung">
+      <img id="cover-image" src="assets/photos/cover.jpg" alt="Ảnh bìa thiệp cưới" fetchpriority="high">
+      <span class="cover-quote">There's a path for everyone.<br>My path leads me back to you</span>
+      <span class="cover-names" id="cover-names"><span class="cover-groom" id="cover-groom">Minh Hoài</span><span class="cover-ampersand" aria-hidden="true">&amp;</span><span class="cover-bride" id="cover-bride">Phương Dung</span></span>
+      <span class="cover-prompt"><span id="cover-date">20.12.2026</span><span class="cover-action">Chạm để mở thiệp <span aria-hidden="true">↗</span></span></span>
+    </button>
+  </section>
+  <div id="invitation-content" hidden>
+  <div class="opening-photo" aria-label="Ảnh mở đầu thiệp cưới">
+    <img id="hero-image" src="assets/photos/top.jpg" width="712" height="1080" alt="Ảnh mở đầu thiệp cưới" fetchpriority="high">
+
+  </div>
+  <div class="opening-title-layer">
+    <div class="opening-story" id="opening-story">
+      <h1 class="story-heading" aria-label="Our Love Begins"><span class="story-first-line"><em class="story-our">Our</em><span class="story-love">Love</span></span><span class="story-begins">Begins</span></h1>
+      <p class="story-since" aria-label="From ten years ago"><span>From</span><span>Ten Years</span><span>Ago</span></p>
+    </div>
+  </div>
+  <main id="main-content" tabindex="-1">
+    <section class="invitation section invitation-letter" id="invitation" aria-labelledby="invitation-heading">
+      <p class="eyebrow letter-label">INVITATION</p>
+      <h2 id="invitation-heading">Thư Mời</h2>
+      <span class="ornament" aria-hidden="true">❦</span>
+      <p class="prose closing" id="invitation-closing"></p>
+    </section>
+    <section class="invitation section wedding-info" id="wedding-info" aria-labelledby="wedding-info-heading">
+      <p class="wedding-info-label">WEDDING INFO</p>
+      <h2 id="wedding-info-heading">Thông tin lễ cưới</h2>
+      <div class="wedding-families">
+        <div class="wedding-family"><p class="family-side">Nhà trai</p><p class="parents-label">Ông Bà</p><p class="parent-names" id="groom-parents"></p><p class="family-address" id="groom-address"></p></div>
+        <div class="wedding-family"><p class="family-side">Nhà gái</p><p class="parents-label">Ông Bà</p><p class="parent-names" id="bride-parents"></p><p class="family-address" id="bride-address"></p></div>
+      </div>
+      <div class="wedding-announcement"><p>Trân trọng báo tin</p><p>Lễ thành hôn của con chúng tôi</p></div>
+      <div class="wedding-couple">
+        <div class="couple-row couple-row--groom"><img src="assets/photos/groom.jpg" alt="Chú rể Minh Hoài" loading="lazy" decoding="async"><div class="couple-details"><p class="couple-role">Chú rể</p><h3 id="groom-fullname"></h3><p class="couple-vow">Cùng em viết tiếp những ngày thương.</p></div></div>
+        <div class="couple-row couple-row--bride"><div class="couple-details"><p class="couple-role">Cô dâu</p><h3 id="bride-fullname"></h3><p class="couple-vow">Cùng anh đi hết những mùa yêu.</p></div><img src="assets/photos/bride.jpg" alt="Cô dâu Phương Dung" loading="lazy" decoding="async"></div>
+      </div>
+    </section>
+    <section class="section events-section" id="events" aria-labelledby="events-heading"><div class="section-title"><div><h2 id="events-heading">Ngày vui của chúng mình</h2></div></div><div class="event-grid" id="event-list"></div></section>
+    <section class="wedding-date-photo" aria-label="Lịch và đếm ngược ngày cưới">
+      <p class="date-photo-title" aria-hidden="true">Wedding</p>
+      <div class="wedding-calendar" id="wedding-calendar" aria-label="Lịch ngày cưới"></div>
+    <section class="countdown-section" aria-labelledby="countdown-heading"><h2 id="countdown-heading">Đến ngày mình có nhau</h2><div id="countdown" class="countdown" role="timer" aria-label="Thời gian còn lại đến ngày cưới"></div><p id="countdown-message" hidden>Ngày hạnh phúc đã đến. Cảm ơn bạn đã cùng chúng mình lưu giữ yêu thương!</p></section>
+    </section>
+    <section class="section album-section" id="album" aria-labelledby="album-heading"><div class="section-title"><div><h2 id="album-heading">Album ngày chung đôi</h2></div><span class="album-hint">Vuốt để chuyển · Chạm ảnh giữa để xem lớn</span></div><div class="album-carousel" id="album-list" role="region" aria-roledescription="bộ ảnh xoay" aria-label="Album ngày chung đôi" tabindex="0"></div><div class="album-controls" hidden><button id="album-previous" class="album-control" aria-label="Ảnh album trước">←</button><span id="album-position" class="album-position">1 / 8</span><button id="album-next" class="album-control" aria-label="Ảnh album tiếp theo">→</button><button id="album-autoplay" class="album-control album-autoplay" aria-pressed="true" aria-label="Tạm dừng tự chuyển ảnh">Ⅱ</button></div><p id="album-current-caption" class="album-current-caption" hidden></p></section>
+    <footer class="farewell-photo"><h2>Hẹn gặp bạn<br>trong ngày hạnh phúc.</h2><div class="farewell-divider" aria-hidden="true"></div><p id="thanks" class="prose"></p><p class="footer-names" id="footer-names"></p><span class="footer-date" id="footer-date"></span></footer>
+    <section class="gift-section" id="gifts" aria-labelledby="gift-heading"><span class="gift-icon" aria-hidden="true">♡</span><p class="eyebrow">GỬI GẮM YÊU THƯƠNG</p><h2 id="gift-heading">Gửi lời yêu thương</h2><p class="prose">Dù ở gần hay xa, tình cảm của bạn luôn là điều chúng mình trân quý.</p><button class="button primary" data-open-gifts>Gửi lời yêu thương <span aria-hidden="true">↗</span></button></section>
+  </main>
+  <nav class="bottom-nav" aria-label="Điều hướng thiệp"><a href="#events">Lễ & tiệc</a><span aria-hidden="true">·</span><a href="#album">Album cưới</a><span aria-hidden="true">·</span><button data-open-gifts>Gửi lời yêu thương <span aria-hidden="true">♡</span></button></nav>
+  </div>
+  <dialog id="album-dialog" class="lightbox" aria-labelledby="album-caption"><button class="close-button" data-close aria-label="Đóng ảnh">×</button><div class="lightbox-stage"><button id="previous-photo" class="photo-arrow" aria-label="Ảnh trước">←</button><img id="large-photo" alt=""><button id="next-photo" class="photo-arrow" aria-label="Ảnh tiếp theo">→</button></div><p id="album-caption" aria-live="polite"></p><p class="image-count" id="image-count"></p></dialog>
+  <dialog id="gift-dialog" class="gift-dialog" aria-labelledby="gift-dialog-heading"><button class="close-button" data-close aria-label="Đóng lời yêu thương">×</button><h2 id="gift-dialog-heading">Gửi lời yêu thương</h2><label class="wish-label" for="wedding-wish">Lời chúc của bạn</label><textarea id="wedding-wish" class="wedding-wish" rows="4" maxlength="2000" placeholder="Gửi đến Minh Hoài và Phương Dung những lời chúc yêu thương…"></textarea><p class="wish-note">Lời chúc tạm lưu trên thiết bị này.</p><p class="gift-pending-note" id="gift-pending-note" hidden>Thông tin mừng cưới sẽ được cập nhật.</p><div class="gift-grid" id="gift-list"></div><p class="copy-status" id="copy-status" role="status"></p></dialog>
+  <div class="music-control" id="music-control" hidden>
+    <button id="music-toggle" type="button" aria-label="Bật nhạc nền" aria-pressed="false"><span aria-hidden="true" id="music-icon">♫</span><span id="music-label">Bật nhạc</span></button>
+    <p id="music-status" role="status"></p>
+  </div>
+  <audio id="background-music" preload="none" loop></audio>
+  <noscript><div class="noscript">Vui lòng bật JavaScript để xem đầy đủ nội dung thiệp cưới.</div></noscript>
+</body>
+</html>
