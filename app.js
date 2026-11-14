@@ -228,19 +228,6 @@
   $('album-dialog').addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showPhoto(currentPhoto + (event.key === 'ArrowLeft' ? -1 : 1)); }
   });
-  $('gift-pending-note').hidden = true;
-  c.gifts.forEach((gift) => {
-    const card = element('article', 'gift-card');
-    if (gift.qr && !gift.qr.includes('qr-placeholder')) {
-      const img = element('img'); img.src = gift.qr; img.alt = `Mã QR ${gift.role}`;
-      img.width = 240; img.height = 240; img.loading = 'lazy';
-      card.append(img);
-    } else {
-      card.append(element('p', 'qr-pending', 'Mã QR sẽ được cập nhật'));
-    }
-    card.append(element('h3', '', gift.role));
-    $('gift-list').append(card);
-  });
   const wish = $('wedding-wish');
   try { wish.value = localStorage.getItem('wedding-wish') || ''; } catch {}
   wish.addEventListener('input', () => {

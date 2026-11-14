@@ -380,11 +380,11 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .wedding-couple .couple-row h3{font-size:clamp(20px,5.5vw,27px);line-height:1.45;white-space:normal;letter-spacing:-.025em;min-width:0;text-wrap:balance}
 @media(max-width:360px){.couple-row{gap:12px}.wedding-couple .couple-row h3{font-size:20px}}
 
-/* Calendar and countdown share a full portrait photograph. */
-.wedding-date-photo{position:relative;isolation:isolate;padding:clamp(180px,58vw,280px) 22px 32px;background:#302b28;color:#fffaf2}
-.wedding-date-photo::after{content:'';position:absolute;inset:0;z-index:-2;background:url('assets/photos/moment.jpg') center bottom/cover no-repeat;pointer-events:none}
+/* Crop the upper space of the portrait behind the calendar and countdown. */
+.wedding-date-photo{position:relative;isolation:isolate;overflow:hidden;padding:clamp(230px,62vw,340px) 22px 32px;background:#302b28;color:#fffaf2}
+.wedding-date-photo::after{content:'';position:absolute;inset:-100px 0 0;z-index:-2;background:url('assets/photos/moment.jpg') center bottom/cover no-repeat;pointer-events:none}
 .wedding-date-photo::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#17141005 10%,#17141020 30%,#17141088 53%,#100e0de8 100%)}
-.date-photo-title{text-align:right;font:italic 64px/1.2 var(--serif);letter-spacing:-3px;margin:0 4px 16px;text-shadow:0 2px 18px #0005}
+.date-photo-title{position:absolute;top:20px;left:22px;text-align:left;font:italic 64px/1.2 var(--serif);letter-spacing:-3px;margin:0 4px 16px;text-shadow:0 2px 18px #0005}
 .wedding-date-photo .wedding-calendar{margin:0;gap:22px}
 .wedding-date-photo .calendar-panel{padding:0;background:transparent;border:0}
 .wedding-date-photo .calendar-table{border-spacing:0 5px}
@@ -394,7 +394,7 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .wedding-date-photo .calendar-table time{width:34px;height:34px}
 .wedding-date-photo .calendar-marked{background:#752f3970;border-color:#f4a6b4;color:#fff;box-shadow:none}
 .wedding-date-photo .calendar-marked::after{color:#f4a6b4;text-shadow:none}
-.wedding-date-photo .calendar-legend{color:#fffaf2d9;border-color:#fff4;padding-top:12px;margin-top:8px;font-size:11px}
+.wedding-date-photo .calendar-legend{display:flex;align-items:center;justify-content:space-evenly;gap:8px;white-space:nowrap;color:#fffaf2d9;border-color:#fff4;padding-top:12px;margin-top:8px;font-size:11px}
 .wedding-date-photo .countdown-section{padding:27px 0 0;background:transparent;color:inherit}
 .wedding-date-photo .countdown-section h2{font:italic 34px/1.3 var(--serif);color:inherit;text-align:left}
 .wedding-date-photo .countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:17px}
