@@ -60,18 +60,36 @@
     </section>
     <section class="section events-section" id="events" aria-labelledby="events-heading"><div class="section-title"><div><h2 id="events-heading">Ngày vui của chúng mình</h2></div></div><div class="event-grid" id="event-list"></div></section>
     <section class="wedding-date-photo" aria-label="Lịch và đếm ngược ngày cưới">
-      <p class="date-photo-title" aria-hidden="true">Wedding</p>
+      <p class="date-photo-title" aria-hidden="true">Save the date</p>
       <div class="wedding-calendar" id="wedding-calendar" aria-label="Lịch ngày cưới"></div>
     <section class="countdown-section" aria-labelledby="countdown-heading"><h2 id="countdown-heading">Đến ngày mình có nhau</h2><div id="countdown" class="countdown" role="timer" aria-label="Thời gian còn lại đến ngày cưới"></div><p id="countdown-message" hidden>Ngày hạnh phúc đã đến. Cảm ơn bạn đã cùng chúng mình lưu giữ yêu thương!</p></section>
     </section>
     <section class="section album-section" id="album" aria-labelledby="album-heading"><div class="section-title"><div><h2 id="album-heading">Album ngày chung đôi</h2></div><span class="album-hint">Vuốt để chuyển · Chạm ảnh giữa để xem lớn</span></div><div class="album-carousel" id="album-list" role="region" aria-roledescription="bộ ảnh xoay" aria-label="Album ngày chung đôi" tabindex="0"></div><div class="album-controls" hidden><button id="album-previous" class="album-control" aria-label="Ảnh album trước">←</button><span id="album-position" class="album-position">1 / 8</span><button id="album-next" class="album-control" aria-label="Ảnh album tiếp theo">→</button><button id="album-autoplay" class="album-control album-autoplay" aria-pressed="true" aria-label="Tạm dừng tự chuyển ảnh">Ⅱ</button></div><p id="album-current-caption" class="album-current-caption" hidden></p></section>
     <footer class="farewell-photo"><h2>Hẹn gặp bạn<br>trong ngày hạnh phúc.</h2><div class="farewell-divider" aria-hidden="true"></div><p id="thanks" class="prose"></p><p class="footer-names" id="footer-names"></p><span class="footer-date" id="footer-date"></span></footer>
-    <section class="gift-section" id="gifts" aria-labelledby="gift-heading"><span class="gift-icon" aria-hidden="true">♡</span><p class="eyebrow">GỬI GẮM YÊU THƯƠNG</p><h2 id="gift-heading">Gửi lời yêu thương</h2><p class="prose">Dù ở gần hay xa, tình cảm của bạn luôn là điều chúng mình trân quý.</p><button class="button primary" data-open-gifts>Gửi lời yêu thương <span aria-hidden="true">↗</span></button></section>
+    <section class="gift-section" id="gifts" aria-labelledby="gift-heading"><span class="gift-icon" aria-hidden="true">♡</span><p class="eyebrow">GỬI GẮM YÊU THƯƠNG</p><h2 id="gift-heading">Gửi lời yêu thương</h2><p class="prose">Dù ở gần hay xa, tình cảm của bạn luôn là điều chúng mình trân quý.</p><button class="button primary" data-open-gifts>Xác nhận tham dự <span aria-hidden="true">↗</span></button></section>
   </main>
-  <nav class="bottom-nav" aria-label="Điều hướng thiệp"><a href="#events">Lễ & tiệc</a><span aria-hidden="true">·</span><a href="#album">Album cưới</a><span aria-hidden="true">·</span><button data-open-gifts>Gửi lời yêu thương <span aria-hidden="true">♡</span></button></nav>
+  <nav class="bottom-nav" aria-label="Điều hướng thiệp"><a href="#events">Lễ & tiệc</a><span aria-hidden="true">·</span><a href="#album">Album cưới</a><span aria-hidden="true">·</span><button data-open-gifts>Xác nhận tham dự <span aria-hidden="true">♡</span></button></nav>
   </div>
   <dialog id="album-dialog" class="lightbox" aria-labelledby="album-caption"><button class="close-button" data-close aria-label="Đóng ảnh">×</button><div class="lightbox-stage"><button id="previous-photo" class="photo-arrow" aria-label="Ảnh trước">←</button><img id="large-photo" alt=""><button id="next-photo" class="photo-arrow" aria-label="Ảnh tiếp theo">→</button></div><p id="album-caption" aria-live="polite"></p><p class="image-count" id="image-count"></p></dialog>
-  <dialog id="gift-dialog" class="gift-dialog" aria-labelledby="gift-dialog-heading"><button class="close-button" data-close aria-label="Đóng lời yêu thương">×</button><h2 id="gift-dialog-heading">Gửi lời yêu thương</h2><label class="wish-label" for="wedding-wish">Lời chúc của bạn</label><textarea id="wedding-wish" class="wedding-wish" rows="4" maxlength="2000" placeholder="Gửi đến Minh Hoài và Phương Dung những lời chúc yêu thương…"></textarea><p class="wish-note">Lời chúc tạm lưu trên thiết bị này.</p><p class="copy-status" id="copy-status" role="status"></p></dialog>
+  <dialog id="gift-dialog" class="gift-dialog" aria-labelledby="gift-dialog-heading">
+    <button class="close-button" data-close aria-label="Đóng xác nhận tham dự">×</button>
+    <h2 id="gift-dialog-heading">Xác nhận tham dự</h2>
+    <form id="rsvp-form">
+      <label class="wish-label" for="guest-name">Tên của bạn</label>
+      <input id="guest-name" class="rsvp-field" name="name" autocomplete="name" required maxlength="100" placeholder="Nhập tên của bạn">
+      <label class="wish-label" for="wedding-wish">Lời chúc của bạn</label>
+      <textarea id="wedding-wish" class="wedding-wish" name="wish" rows="4" maxlength="2000" placeholder="Gửi đến Minh Hoài và Phương Dung những lời chúc yêu thương…"></textarea>
+      <label class="wish-label" for="guest-attendance">Bạn có tham dự không?</label>
+      <select id="guest-attendance" class="rsvp-field" name="attendance" required>
+        <option value="">Chọn xác nhận của bạn</option>
+        <option value="yes">Mình sẽ tham dự</option>
+        <option value="no">Tiếc quá, mình không thể tham dự</option>
+      </select>
+      <p class="wish-note">Nhấn Xác nhận để gửi thông tin và lời chúc đến cô dâu chú rể.</p>
+      <button class="button primary rsvp-submit" type="submit">Xác nhận</button>
+    </form>
+    <p class="copy-status" id="copy-status" role="status"></p>
+  </dialog>
   <div class="music-control" id="music-control" hidden>
     <button id="music-toggle" type="button" aria-label="Bật nhạc nền" aria-pressed="false"><span aria-hidden="true" id="music-icon">♫</span><span id="music-label">Bật nhạc</span></button>
     <p id="music-status" role="status"></p>

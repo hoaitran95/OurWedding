@@ -229,10 +229,64 @@
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showPhoto(currentPhoto + (event.key === 'ArrowLeft' ? -1 : 1)); }
   });
   const wish = $('wedding-wish');
-  try { wish.value = localStorage.getItem('wedding-wish') || ''; } catch {}
+  const guestName = $('guest-name');
+  const attendance = $('guest-attendance');
+  try {
+    wish.value = localStorage.getItem('wedding-wish') || '';
+    const saved = JSON.parse(localStorage.getItem('wedding-rsvp') || 'null');
+    if (saved) {
+      guestName.value = saved.name || '';
+      attendance.value = saved.attendance || '';
+      wish.value = saved.wish || wish.value;
+    }
+  } catch {}
   wish.addEventListener('input', () => {
     try { localStorage.setItem('wedding-wish', wish.value); } catch {}
   });
+  let rsvpSending = false;
+  $('rsvp-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (rsvpSending) return;
+    if (!guestName.value.trim()) {
+      guestName.setCustomValidity('Vui lòng nhập tên của bạn.');
+      guestName.reportValidity();
+      return;
+    }
+    const data = {
+      name: guestName.value.trim(), wish: wish.value.trim(),
+      attendance: attendance.value
+    };
+    try {
+      localStorage.setItem('wedding-rsvp', JSON.stringify({ ...data, savedAt: new Date().toISOString() }));
+    } catch {}
+    const submit = $('rsvp-form').querySelector('[type="submit"]');
+    rsvpSending = true;
+    submit.disabled = true;
+    submit.textContent = 'Đang gửi…';
+    $('rsvp-form').setAttribute('aria-busy', 'true');
+    text('copy-status', 'Đang gửi xác nhận của bạn…');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    try {
+      const response = await fetch(c.rsvpEndpoint, {
+        method: 'POST', body: new URLSearchParams(data),
+        credentials: 'omit', signal: controller.signal
+      });
+      if (!response.ok || (await response.text()).trim() !== 'ok') {
+        throw new Error('RSVP was not acknowledged');
+      }
+      text('copy-status', 'Đã gửi xác nhận. Cảm ơn bạn đã gửi lời yêu thương đến chúng mình!');
+    } catch {
+      text('copy-status', 'Chưa nhận được xác nhận gửi thành công. Bạn vui lòng kiểm tra kết nối; nếu đã gửi, hãy kiểm tra với cô dâu chú rể trước khi gửi lại để tránh trùng.');
+    } finally {
+      clearTimeout(timeout);
+      rsvpSending = false;
+      submit.disabled = false;
+      submit.textContent = 'Xác nhận';
+      $('rsvp-form').removeAttribute('aria-busy');
+    }
+  });
+  guestName.addEventListener('input', () => guestName.setCustomValidity(''));
   document.querySelectorAll('[data-open-gifts]').forEach((button) => button.addEventListener('click', () => { text('copy-status', ''); openDialog($('gift-dialog')); }));
   if (c.music?.enabled && c.music.src) {
     const audio = $('background-music');

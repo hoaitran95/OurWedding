@@ -399,6 +399,12 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .wedding-date-photo .countdown-section h2{font:italic 34px/1.3 var(--serif);color:inherit;text-align:left}
 .wedding-date-photo .countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:17px}
 .wedding-date-photo .countdown div{min-width:0;padding:13px 4px 10px;border:1px solid #fff2;border-radius:5px;background:#ffffff10}
-.wedding-date-photo .countdown strong{font-size:33px;color:#f2d5ca;font-variant-numeric:tabular-nums}
+.wedding-date-photo .countdown strong{font-family:Arial,Helvetica,sans-serif;font-size:33px;font-weight:400;color:#f2d5ca;font-variant-numeric:tabular-nums}
 .wedding-date-photo .countdown span{font-size:10px;letter-spacing:.5px;color:#f2d5ca}
 @media(max-width:360px){.wedding-date-photo{padding-inline:16px}.date-photo-title{font-size:56px}.wedding-date-photo .countdown{gap:7px}}
+
+.gift-section [data-open-gifts],.rsvp-submit{border-radius:999px}
+.rsvp-field{display:block;width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffaf2;color:var(--ink);font:inherit}
+.rsvp-submit{margin-top:22px;width:100%}
+
+.rsvp-submit:disabled{opacity:.65;cursor:wait}
