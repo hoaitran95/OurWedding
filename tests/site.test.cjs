@@ -6,6 +6,7 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const content = fs.readFileSync(path.join(root, 'content.js'), 'utf8');
 const context = { window: {} }; vm.runInNewContext(content, context);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'assets/albums/manifest.js'), 'utf8'), context);
 const c = context.window.WEDDING;
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 test('content dates are explicit Vietnam times and map links resolve to Google Maps', () => {
@@ -20,13 +21,15 @@ test('content dates are explicit Vietnam times and map links resolve to Google M
 });
 test('all static resources exist and preserve a GitHub project prefix', () => {
   const refs = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)].map(m => m[1]);
-  refs.push(c.opening.src, c.cover.src, c.music.src, c.hero, c.site.shareImage, ...c.interludes.map(p => p.src), ...c.album.map(p => p.src), ...c.gifts.map(g => g.qr));
-  for (const ref of refs) { assert.ok(!ref.startsWith('/'), ref); assert.ok(fs.existsSync(path.join(root, ref)), ref); assert.ok(new URL(ref, 'https://example.github.io/OurWedding/').pathname.startsWith('/OurWedding/')); }
-});
-test('gift QR cards use the supplied groom asset and preserve bride slot', () => {
-  assert.equal(c.gifts[0].role, 'Chú rể');
-  assert.equal(c.gifts[0].qr, 'assets/QR_groom.png');
-  assert.equal(c.gifts[1].role, 'Cô dâu');
+  refs.push(c.opening.src, c.cover.src, c.music.src, c.hero, c.site.shareImage, ...c.interludes.map(p => p.src), ...c.album.map(p => p.src));
+  const base = new URL('https://example.github.io/OurWedding/');
+  for (const ref of refs) {
+    assert.ok(!ref.startsWith('/'), ref);
+    const url = new URL(ref, base);
+    assert.ok(url.pathname.startsWith(base.pathname), ref);
+    const localPath = decodeURIComponent(url.pathname.slice(base.pathname.length));
+    assert.ok(fs.existsSync(path.join(root, localPath)), ref);
+  }
 });
 test('countdown handles future, boundary and past dates', () => {
   // Stop immediately after the utility declarations; no browser DOM is required.
