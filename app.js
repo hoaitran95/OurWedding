@@ -22,7 +22,7 @@
   meta('og:image', c.site.url ? new URL(c.site.shareImage, c.site.url).href : c.site.shareImage);
   if (c.site.url) {
     const canonical = document.createElement('link'); canonical.rel = 'canonical'; canonical.href = c.site.url; document.head.append(canonical);
-    const ogUrl = document.createElement('meta'); ogUrl.setAttribute('property', 'og:url'); ogUrl.content = c.site.url; document.head.append(ogUrl);
+    const ogUrl = document.querySelector('meta[property="og:url"]') || document.createElement('meta'); ogUrl.setAttribute('property', 'og:url'); ogUrl.content = c.site.url; if (!ogUrl.isConnected) document.head.append(ogUrl);
   }
   const wedding = dateParts(c.weddingDate);
   $('hero-image').src = c.opening?.src || c.cover?.src || c.hero;
@@ -222,7 +222,7 @@
   observer.observe($('album-list'));
   setInterval(() => {
     if (autoSlides && albumVisible && c.album.length > 1 && !document.hidden && !document.querySelector('dialog[open]') && !touchStart) moveSlides(1);
-  }, 4000);
+  }, 2000);
   $('previous-photo').addEventListener('click', () => showPhoto(currentPhoto - 1)); $('next-photo').addEventListener('click', () => showPhoto(currentPhoto + 1));
   $('previous-photo').hidden = $('next-photo').hidden = c.album.length < 2;
   $('album-dialog').addEventListener('keydown', (event) => {
