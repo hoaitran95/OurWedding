@@ -346,8 +346,13 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .wedding-info .wedding-info-label{margin-bottom:16px}
 
 /* Oval map buttons, one for each ceremony. */
-.event-card .map-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;max-width:100%;padding:10px 22px;border:1px solid #a58c78;border-radius:999px;background:transparent;color:var(--wine);font-size:13px;line-height:1.5;text-align:center;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
-.event-card .map-link:hover{background:var(--wine);border-color:var(--wine);color:var(--cream)}
+.event-transport{container-type:inline-size;margin-top:20px;padding:18px 12px;background:#fff8ef;border:1px solid var(--line);border-radius:12px;font-size:14px;line-height:1.7;text-align:center;color:var(--ink)}
+.event-transport-pickup,.event-transport-detail{font-size:min(16px,3.7cqi);white-space:nowrap;margin-top:6px}
+.event-transport-pickup{white-space:normal}
+.event-transport-title{font-size:16px;font-weight:700;color:var(--wine);margin-bottom:6px}
+.event-card .map-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;max-width:100%;padding:10px 22px;border:1px solid #c32f3d;border-radius:999px;background:#c32f3d;color:#fff;font-size:13px;font-weight:600;line-height:1.5;text-align:center;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.event-card .map-link svg{width:18px;height:18px;flex-shrink:0}
+.event-card .map-link:hover{background:#a32330;border-color:#a32330;color:#fff}
 .event-card{border-radius:28px}
 .event-card::before{border-radius:20px}
 
@@ -377,6 +382,9 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .couple-vow::before{content:'';display:block;width:32px;height:1px;background:var(--line);margin-bottom:12px}
 .couple-row--bride .couple-vow::before{margin-left:auto}
 .couple-row img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:100px 100px 4px 4px;padding:5px;border:1px solid var(--line)}
+.bride-photo-frame{width:90%;justify-self:end;aspect-ratio:3/4;overflow:hidden;border-radius:100px 100px 4px 4px;border:1px solid var(--line);padding:5px}
+.bride-photo-crop{width:100%;height:100%;overflow:hidden;border-radius:100px 100px 0 0}
+.couple-row .bride-photo-frame img{height:100%;border:0;padding:0;border-radius:100px 100px 0 0;transform:scale(1.9);transform-origin:50% 38%}
 .wedding-couple .couple-row h3{font-size:clamp(20px,5.5vw,27px);line-height:1.45;white-space:normal;letter-spacing:-.025em;min-width:0;text-wrap:balance}
 @media(max-width:360px){.couple-row{gap:12px}.wedding-couple .couple-row h3{font-size:20px}}
 

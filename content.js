@@ -19,8 +19,8 @@ window.WEDDING = {
   invitationClosing: 'Sau những mùa thu dần qua,\nchúng mình tìm thấy bến bờ bình yên trong nhau.\n\nXin gửi lời mời chân thành nhất\nđến các bạn trong ngày vui của chúng mình.',
   thanks: 'Sự hiện diện của bạn là món quà quý giá nhất trong ngày hạnh phúc của chúng mình.',
   events: [
-    { side: 'Nhà gái', title: 'Tiệc vu quy', datetime: '2026-12-19T11:00:00+07:00', venue: 'Nhà hàng Leyna Palace – Sảnh 3', address: '196 ĐT 766, Thôn Đức Hạnh, Xã Hoài Đức, Tỉnh Lâm Đồng', mapsUrl: 'https://maps.app.goo.gl/39xXMY6QAoUMy9Rq5' },
-    { side: 'Nhà trai', title: 'Tiệc tân hôn', datetime: '2026-12-20T11:00:00+07:00', ceremonyDatetime: '2026-12-20T09:00:00+07:00', venue: 'Tư gia nhà trai', address: '139 Điện Biên Phủ, Hoài Đức, Lâm Đồng', mapsUrl: 'https://maps.app.goo.gl/gscFx4pofCw3k8Yu5' }
+    { side: 'Nhà gái', title: 'Tiệc vu quy', datetime: '2026-12-19T11:00:00+07:00', venue: 'Nhà hàng Leyna Palace – Sảnh 3', address: '196 ĐT 766, Thôn Đức Hạnh, Xã Hoài Đức, Tỉnh Lâm Đồng', mapsUrl: 'https://maps.app.goo.gl/39xXMY6QAoUMy9Rq5', transport: { pickup: 'Xe đón lúc 8h30 tại BV Đa khoa Khu Vực Thủ Đức.', return: 'Dự kiến về lại Sài Gòn lúc 14h', duration: '(Thời gian di chuyển khoảng 2h/lượt)' } },
+    { side: 'Nhà trai', title: 'Tiệc tân hôn', datetime: '2026-12-20T11:00:00+07:00', ceremonyDatetime: '2026-12-20T09:00:00+07:00', venue: 'Tư gia nhà trai', address: '139 Điện Biên Phủ, Hoài Đức, Lâm Đồng', mapsUrl: 'https://maps.app.goo.gl/gscFx4pofCw3k8Yu5', transport: { pickup: 'Xe đón lúc 8h30 tại Sài Gòn.', return: 'Dự kiến về lại Sài Gòn lúc 14h', duration: '(Thời gian di chuyển khoảng 2h/lượt)' } }
   ],
   // Ảnh xen kẽ độc lập với album cuối trang; thay src và position theo ảnh thật.
   interludes: [

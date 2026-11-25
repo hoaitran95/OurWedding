@@ -82,7 +82,19 @@
     card.append(reception);
     const time = element('time', 'event-date', date.full.replaceAll('/', ' . ')); time.dateTime = event.datetime;
     card.append(time, element('p', 'event-day', date.day), element('hr'), element('p', 'event-venue', event.venue), element('p', 'event-address', event.address));
-    const map = element('a', 'map-link', `Chỉ đường - ${event.side === 'Nhà trai' ? 'Lễ thành hôn' : 'Lễ vu quy'}`); map.href = event.mapsUrl; map.target = '_blank'; map.rel = 'noopener noreferrer'; map.setAttribute('aria-label', `Chỉ đường đến ${event.title} (${event.side}), mở tab mới`); card.append(map);
+    const map = element('a', 'map-link', `Chỉ đường - ${event.side === 'Nhà trai' ? 'Lễ thành hôn' : 'Lễ vu quy'}`);
+    const mapIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    mapIcon.setAttribute('viewBox', '0 0 24 24');
+    mapIcon.setAttribute('aria-hidden', 'true');
+    mapIcon.innerHTML = '<path d="m21 3-6.5 18-4-7.5L3 9.5 21 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>';
+    map.prepend(mapIcon);
+    map.href = event.mapsUrl; map.target = '_blank'; map.rel = 'noopener noreferrer'; map.setAttribute('aria-label', `Chỉ đường đến ${event.title} (${event.side}), mở tab mới`); card.append(map);
+    if (event.transport) {
+      const transport = element('aside', 'event-transport');
+      transport.append(element('p', 'event-transport-title', 'Thông tin xe đưa rước'), element('p', 'event-transport-pickup', event.transport.pickup), element('p', 'event-transport-detail', event.transport.return));
+      if (event.transport.duration) transport.append(element('p', 'event-transport-detail', event.transport.duration));
+      card.append(transport);
+    }
     $('event-list').append(card);
   });
   const months = new Map();

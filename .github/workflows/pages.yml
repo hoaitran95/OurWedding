@@ -11,11 +11,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: read
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -25,16 +25,44 @@ jobs:
         run: node scripts/build-album.cjs
       - name: Validate content and static assets
         run: node --test tests/site.test.cjs
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - name: Prepare public files
         run: |
           mkdir _site
           cp index.html styles.css content.js app.js _site/
           cp -R assets _site/assets
           touch _site/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
+      - name: Archive Pages artifact
+        run: tar --dereference --hard-dereference -cf "$RUNNER_TEMP/artifact.tar" -C _site .
+      - name: Upload Pages artifact
+        id: upload
+        uses: actions/upload-artifact@v6
         with:
-          path: _site
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+          overwrite: true
+      - name: Verify Pages artifact was uploaded
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id }}
+        run: test -n "$ARTIFACT_ID"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Artifact listing can lag a successful upload (actions/deploy-pages#451).
+      - name: Allow artifact metadata to become available
+        run: sleep 10
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages
