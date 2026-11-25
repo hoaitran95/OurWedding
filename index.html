@@ -87,13 +87,23 @@
       <label class="wish-label" for="guest-name">Tên của bạn</label>
       <input id="guest-name" class="rsvp-field" name="name" autocomplete="name" required maxlength="100" placeholder="Nhập tên của bạn">
       <label class="wish-label" for="wedding-wish">Lời chúc của bạn</label>
-      <textarea id="wedding-wish" class="wedding-wish" name="wish" rows="4" maxlength="2000" placeholder="Gửi đến Minh Hoài và Phương Dung những lời chúc yêu thương…"></textarea>
+      <textarea id="wedding-wish" class="wedding-wish" name="wish" rows="2" maxlength="2000" placeholder="Gửi đến Minh Hoài và Phương Dung những lời chúc yêu thương…"></textarea>
       <label class="wish-label" for="guest-attendance">Bạn có tham dự không?</label>
       <select id="guest-attendance" class="rsvp-field" name="attendance" required>
         <option value="">Chọn xác nhận của bạn</option>
         <option value="yes">Mình sẽ tham dự</option>
         <option value="no">Tiếc quá, mình không thể tham dự</option>
       </select>
+      <div id="guest-counts">
+        <div>
+        <label class="wish-label" for="guest-adults">Số lượng người lớn</label>
+        <input id="guest-adults" class="rsvp-field" name="adults" type="number" min="1" step="1" value="1" required>
+        </div>
+        <div>
+        <label class="wish-label" for="guest-children">Số lượng trẻ em</label>
+        <input id="guest-children" class="rsvp-field" name="children" type="number" min="0" step="1" value="0" required>
+        </div>
+      </div>
       <p class="wish-note">Nhấn Xác nhận để gửi thông tin và lời chúc đến cô dâu chú rể.</p>
       <button class="button primary rsvp-submit" type="submit">Xác nhận</button>
     </form>

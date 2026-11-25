@@ -243,15 +243,27 @@
   const wish = $('wedding-wish');
   const guestName = $('guest-name');
   const attendance = $('guest-attendance');
+  const adults = $('guest-adults');
+  const children = $('guest-children');
   try {
     wish.value = localStorage.getItem('wedding-wish') || '';
     const saved = JSON.parse(localStorage.getItem('wedding-rsvp') || 'null');
     if (saved) {
       guestName.value = saved.name || '';
       attendance.value = saved.attendance || '';
+      adults.value = Number.isSafeInteger(saved.adults) && saved.adults >= 1 ? saved.adults : 1;
+      children.value = Number.isSafeInteger(saved.children) && saved.children >= 0 ? saved.children : 0;
       wish.value = saved.wish || wish.value;
     }
   } catch {}
+  const updateGuestCounts = () => {
+    const declined = attendance.value === 'no';
+    $('guest-counts').hidden = declined;
+    adults.disabled = declined;
+    children.disabled = declined;
+  };
+  attendance.addEventListener('change', updateGuestCounts);
+  updateGuestCounts();
   wish.addEventListener('input', () => {
     try { localStorage.setItem('wedding-wish', wish.value); } catch {}
   });
@@ -266,7 +278,9 @@
     }
     const data = {
       name: guestName.value.trim(), wish: wish.value.trim(),
-      attendance: attendance.value
+      attendance: attendance.value,
+      adults: attendance.value === 'no' ? 0 : Number(adults.value),
+      children: attendance.value === 'no' ? 0 : Number(children.value)
     };
     try {
       localStorage.setItem('wedding-rsvp', JSON.stringify({ ...data, savedAt: new Date().toISOString() }));
@@ -284,7 +298,12 @@
         method: 'POST', body: new URLSearchParams(data),
         credentials: 'omit', signal: controller.signal
       });
-      if (!response.ok || (await response.text()).trim() !== 'ok') {
+      const result = (await response.text()).trim();
+      if (response.ok && result === 'error') {
+        text('copy-status', 'Hệ thống lưu xác nhận đang gặp lỗi. Vui lòng liên hệ cô dâu chú rể để xác nhận tham dự.');
+        return;
+      }
+      if (!response.ok || result !== 'ok') {
         throw new Error('RSVP was not acknowledged');
       }
       text('copy-status', 'Đã gửi xác nhận. Cảm ơn bạn đã gửi lời yêu thương đến chúng mình!');

@@ -1,7 +1,7 @@
 // Chỉnh nội dung tại đây. Mọi đường dẫn ảnh đều tương đối với index.html.
 window.WEDDING = {
   demo: true,
-  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycby4ZXg5hrQy2kkpHvs64HD20zkO0DraDaYKSP2OpkfFOo0SRtz1KNidBZe9v73ZexiBOA/exec',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbwZvmh3QkFv2AJL66Du2iFG_tjkVT3_Xt_lz-kc56IAmkxeaPm6M36w2w2tEz5YRFK1/exec',
   site: {
     title: 'Minh Hoài & Phương Dung — Mình cưới nhé',
     description: 'Trân trọng mời bạn đến chung vui trong ngày hạnh phúc của Minh Hoài và Phương Dung.',

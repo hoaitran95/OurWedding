@@ -412,7 +412,15 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 @media(max-width:360px){.wedding-date-photo{padding-inline:16px}.date-photo-title{font-size:56px}.wedding-date-photo .countdown{gap:7px}}
 
 .gift-section [data-open-gifts],.rsvp-submit{border-radius:999px}
-.rsvp-field{display:block;width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffaf2;color:var(--ink);font:inherit}
-.rsvp-submit{margin-top:22px;width:100%}
+.rsvp-field{display:block;width:100%;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fffaf2;color:var(--ink);font:inherit;font-size:16px}
+#gift-dialog{padding:34px 20px 16px}
+#gift-dialog h2{font-size:30px;margin:4px 0 12px}
+#rsvp-form .wish-label{margin:10px 0 4px;line-height:1.4}
+#rsvp-form .wedding-wish{min-height:76px;padding:8px 12px;font-size:16px;line-height:1.5}
+#guest-counts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#guest-counts>div{min-width:0}
+#gift-dialog .copy-status{margin-top:8px;min-height:0}
+#gift-dialog .copy-status:empty{display:none}
+.rsvp-submit{margin-top:12px;width:100%}
 
 .rsvp-submit:disabled{opacity:.65;cursor:wait}
