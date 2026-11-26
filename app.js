@@ -34,13 +34,18 @@
     text(`${role}-parents`, `${c[role].father}\n${c[role].mother}`);
     text(`${role}-address`, c[role].familyAddress);
   }
-  text('thanks', c.thanks); text('footer-names', `${c.groom.name} & ${c.bride.name}`); text('footer-date', wedding.full.replaceAll('/', ' . '));
+  text('thanks', c.thanks); text('footer-names', `${c.groom.name} & ${c.bride.name}`);
   $('cover-image').src = c.cover?.src || c.hero;
   $('cover-image').alt = c.cover?.alt || 'Ảnh bìa thiệp cưới';
   $('cover-image').style.objectPosition = c.cover?.position || 'center';
   text('cover-groom', c.groom.name);
   text('cover-bride', c.bride.name);
-  text('cover-date', wedding.full.replaceAll('/', '.'));
+  const eventDateLabels = c.events.map((event) => `${dateParts(event.datetime).full.replaceAll('/', '.')} (${event.side.toLocaleLowerCase('vi')})`);
+  for (const id of ['cover-event-dates', 'footer-date']) $(id).replaceChildren(...eventDateLabels.map((value) => {
+    const label = document.createElement('span');
+    label.textContent = value;
+    return label;
+  }));
   $('open-invitation').setAttribute('aria-label', `Mở thiệp cưới ${c.groom.name} và ${c.bride.name}`);
   document.body.classList.add('cover-closed');
   $('open-invitation').addEventListener('click', () => {

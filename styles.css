@@ -81,7 +81,7 @@ body.cover-closed{overflow:hidden;background:#291d1b}
 .calendar-marked{border:1px solid var(--wine);border-radius:50%;background:var(--wine);color:var(--cream);box-shadow:0 0 0 4px #752f3912}
 .calendar-marked::after{content:'♥';position:absolute;right:-5px;top:-9px;font-size:15px;color:var(--wine);text-shadow:0 0 3px var(--cream)}
 .calendar-legend{border-top:1px solid var(--line);padding-top:20px;margin-top:12px;font-size:13px;line-height:2;color:var(--wine)}
-@media(max-width:600px){.cover-screen{padding:0}.cover-open{width:100%;max-height:none;border:0;border-radius:0}.cover-names{top:25px;font-size:29px}.cover-prompt{bottom:max(22px,env(safe-area-inset-bottom));left:18px;right:18px}.cover-prompt>span:first-child{font-size:11px}.cover-action{font-size:11px;padding:11px 13px;gap:10px}.calendar-panel{padding:26px 12px}.calendar-table caption{font-size:34px}.calendar-table td{font-size:14px}.calendar-table time{width:34px;height:34px}.calendar-legend{font-size:12px}}
+@media(max-width:600px){.cover-screen{padding:0}.cover-open{width:100%;max-height:none;border:0;border-radius:0}.cover-names{top:25px;font-size:29px}.cover-prompt{bottom:max(22px,env(safe-area-inset-bottom));left:18px;right:18px}.cover-action{font-size:11px;padding:11px 13px;gap:10px}.calendar-panel{padding:26px 12px}.calendar-table caption{font-size:34px}.calendar-table td{font-size:14px}.calendar-table time{width:34px;height:34px}.calendar-legend{font-size:12px}}
 
 .closing{white-space:pre-line}
 
@@ -333,9 +333,12 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .cover-ampersand{font:italic 400 clamp(27px,7cqw,35px)/1 var(--serif);align-self:center;margin:-2px 0 -2px;color:#eed1b6}
 .cover-bride{font:italic 300 clamp(55px,18cqw,86px)/1.1 var(--serif);letter-spacing:-.045em;white-space:nowrap;align-self:flex-end}
 .cover-prompt{bottom:max(25px,env(safe-area-inset-bottom));left:22px;right:22px;z-index:3;flex-direction:column;justify-content:center;gap:16px}
-.cover-prompt>span:first-child{width:100%;text-align:center;font-family:inherit;font-style:normal;font-weight:400;font-size:clamp(28px,8cqw,38px);line-height:1.2;letter-spacing:2px}
 .cover-action{font-size:12px;letter-spacing:0;padding:13px 16px;background:#3f140e66}
 @media(max-height:650px){.cover-names{bottom:133px}.cover-groom{font-size:clamp(43px,12cqw,60px)}.cover-bride{font-size:clamp(39px,10cqw,50px)}.cover-ampersand{font-size:25px}.cover-prompt{bottom:18px;gap:12px}}
+
+.cover-event-dates{display:flex;flex-direction:column;gap:8px;text-align:center;font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;font-style:normal;font-weight:400;font-variant-numeric:lining-nums;font-size:clamp(22px,6cqw,28px);line-height:1.4;letter-spacing:.3px}
+.cover-names{bottom:200px}
+@media(max-height:650px){.cover-names{bottom:183px}.cover-event-dates{font-size:22px;gap:5px}}
 
 /* A dedicated invitation letter precedes the formal family announcement. */
 .invitation-letter{padding:58px 28px 48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--cream)}
@@ -362,7 +365,7 @@ footer{padding:60px 24px 135px}footer h2{font-size:38px}footer .eyebrow{font-siz
 .farewell-divider{width:58px;height:1px;background:#fff7ed80;margin:22px auto}
 .farewell-photo .prose{color:#fff7ede6;font-size:14px;max-width:340px}
 .farewell-photo .footer-names{color:inherit;margin:25px 0 9px;font-size:27px}
-.farewell-photo .footer-date{color:#fff7edcc;letter-spacing:3px}
+.farewell-photo .footer-date{display:flex;flex-direction:column;gap:8px;color:#fff7edcc;letter-spacing:3px}
 .wish-label{display:block;text-align:left;margin:24px 0 8px;font-size:14px;color:var(--wine)}
 .wedding-wish{display:block;width:100%;resize:vertical;min-height:125px;padding:14px;border:1px solid var(--line);border-radius:6px;background:#fffaf2;color:var(--ink);font:inherit;font-size:14px;line-height:1.7}
 .wish-note{text-align:left;font-size:11px;color:var(--muted);margin-top:6px}
